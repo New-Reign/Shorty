@@ -1,29 +1,102 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5023" systemVersion="13A603" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4510" systemVersion="12F37" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
     </dependencies>
     <scenes>
-        <!--class Prefix:identifier View Controller-->
+        <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="SUViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                        <viewControllerLayoutGuide type="top" id="s6i-69-DQ8"/>
+                        <viewControllerLayoutGuide type="bottom" id="PAH-MY-E6g"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7JC-mu-YuP">
+                                <rect key="frame" x="0.0" y="20" width="768" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem id="Pqj-4G-KFQ">
+                                        <nil key="title"/>
+                                        <textField key="titleView" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="http://" borderStyle="roundedRect" placeholder="http://" minimumFontSize="17" clearButtonMode="whileEditing" id="QHf-e8-z6e">
+                                            <rect key="frame" x="11" y="7" width="710" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="URL" returnKeyType="go"/>
+                                            <connections>
+                                                <action selector="loadLocation:" destination="BYZ-38-t0r" eventType="editingDidEndOnExit" id="bkh-tE-mZe"/>
+                                            </connections>
+                                        </textField>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="YrF-1F-8zP">
+                                            <connections>
+                                                <action selector="loadLocation:" destination="BYZ-38-t0r" id="R7y-CJ-Hnh"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <webView contentMode="scaleToFill" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tU3-7W-ZXh">
+                                <rect key="frame" x="0.0" y="64" width="768" height="916"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="OWi-gS-Wkx"/>
+                                </connections>
+                            </webView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k7N-XU-g5C">
+                                <rect key="frame" x="0.0" y="980" width="768" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <items>
+                                    <barButtonItem enabled="NO" systemItem="play" id="22Y-yh-KJf">
+                                        <connections>
+                                            <action selector="shortenURL:" destination="BYZ-38-t0r" id="2dw-6d-8Fp"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="9qa-wp-LqK"/>
+                                    <barButtonItem title="Tap arrow to shorten" style="plain" id="orD-7b-tZw">
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="3Yx-7F-PGh"/>
+                                    <barButtonItem enabled="NO" title="Copy" id="QLS-hh-0Cz">
+                                        <connections>
+                                            <action selector="clipboardURL:" destination="BYZ-38-t0r" id="cHQ-L3-OLD"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="7JC-mu-YuP" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="9BR-PC-xoy"/>
+                            <constraint firstItem="7JC-mu-YuP" firstAttribute="leading" secondItem="tU3-7W-ZXh" secondAttribute="leading" id="AXx-7v-Wok"/>
+                            <constraint firstItem="tU3-7W-ZXh" firstAttribute="trailing" secondItem="k7N-XU-g5C" secondAttribute="trailing" id="CKL-6m-cTT"/>
+                            <constraint firstItem="tU3-7W-ZXh" firstAttribute="top" secondItem="7JC-mu-YuP" secondAttribute="bottom" id="EHT-Ft-nRA"/>
+                            <constraint firstItem="tU3-7W-ZXh" firstAttribute="leading" secondItem="k7N-XU-g5C" secondAttribute="leading" id="R3h-DQ-aSE"/>
+                            <constraint firstItem="k7N-XU-g5C" firstAttribute="top" secondItem="tU3-7W-ZXh" secondAttribute="bottom" id="VYJ-ZS-Izn"/>
+                            <constraint firstItem="7JC-mu-YuP" firstAttribute="trailing" secondItem="tU3-7W-ZXh" secondAttribute="trailing" id="gZT-Tf-4n9"/>
+                            <constraint firstAttribute="trailing" secondItem="k7N-XU-g5C" secondAttribute="trailing" id="qq6-Zu-93V"/>
+                            <constraint firstAttribute="bottom" secondItem="k7N-XU-g5C" secondAttribute="bottom" id="sBr-3b-YPA"/>
+                            <constraint firstItem="7JC-mu-YuP" firstAttribute="top" secondItem="s6i-69-DQ8" secondAttribute="bottom" id="sOs-p3-HX9"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="clipboardButton" destination="QLS-hh-0Cz" id="o4Q-Jz-Mkw"/>
+                        <outlet property="shortLabel" destination="orD-7b-tZw" id="xUf-7L-YB7"/>
+                        <outlet property="shortenButton" destination="22Y-yh-KJf" id="E5T-rt-9A1"/>
+                        <outlet property="urlField" destination="QHf-e8-z6e" id="R6P-O0-UJZ"/>
+                        <outlet property="webView" destination="tU3-7W-ZXh" id="UBX-bG-R4L"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
-        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackOpaque"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
